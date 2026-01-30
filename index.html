@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="dk-qr - Professional QR Code Generator. Create QR codes for URLs, WiFi, contacts, social media, and more.">
+    <title>dk-qr | Professional QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="dk-qr Home">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="14" height="14" rx="2" fill="currentColor"/>
+                    <rect x="24" y="2" width="14" height="14" rx="2" fill="currentColor"/>
+                    <rect x="2" y="24" width="14" height="14" rx="2" fill="currentColor"/>
+                    <rect x="24" y="24" width="6" height="6" rx="1" fill="currentColor"/>
+                    <rect x="32" y="24" width="6" height="6" rx="1" fill="currentColor"/>
+                    <rect x="24" y="32" width="6" height="6" rx="1" fill="currentColor"/>
+                    <rect x="32" y="32" width="6" height="6" rx="1" fill="currentColor"/>
+                    <circle cx="9" cy="9" r="3" fill="var(--bg-primary)"/>
+                    <circle cx="31" cy="9" r="3" fill="var(--bg-primary)"/>
+                    <circle cx="9" cy="31" r="3" fill="var(--bg-primary)"/>
+                </svg>
+                <span class="logo-text">dk-qr</span>
+            </a>
+            <nav class="header-nav">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Generate QR Codes Instantly</h1>
+                <p>Create professional QR codes for URLs, WiFi, contacts, social media, and more. Free, fast, and works offline.</p>
+            </section>
+
+            <div class="app-grid">
+                <!-- Left Panel - Inputs -->
+                <div class="panel panel-inputs">
+                    <!-- QR Type Selector -->
+                    <div class="card">
+                        <h2 class="card-title">QR Code Type</h2>
+                        <div class="type-selector">
+                            <button class="type-btn active" data-type="text">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                                <span>Text</span>
+                            </button>
+                            <button class="type-btn" data-type="url">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                </svg>
+                                <span>URL</span>
+                            </button>
+                            <button class="type-btn" data-type="phone">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                <span>Phone</span>
+                            </button>
+                            <button class="type-btn" data-type="sms">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                <span>SMS</span>
+                            </button>
+                            <button class="type-btn" data-type="email">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                <span>Email</span>
+                            </button>
+                            <button class="type-btn" data-type="wifi">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                                <span>WiFi</span>
+                            </button>
+                            <button class="type-btn" data-type="social">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="18" cy="5" r="3"/>
+                                    <circle cx="6" cy="12" r="3"/>
+                                    <circle cx="18" cy="19" r="3"/>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                </svg>
+                                <span>Social</span>
+                            </button>
+                            <button class="type-btn" data-type="vcard">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>Contact</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Input Forms -->
+                    <div class="card">
+                        <h2 class="card-title">Content</h2>
+                        
+                        <!-- Text Form -->
+                        <div id="form-text" class="qr-form active">
+                            <div class="form-group">
+                                <label for="text-content">Text Message</label>
+                                <textarea id="text-content" placeholder="Enter your text here..." rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- URL Form -->
+                        <div id="form-url" class="qr-form">
+                            <div class="form-group">
+                                <label for="url-content">Website URL</label>
+                                <input type="url" id="url-content" placeholder="https://example.com">
+                            </div>
+                        </div>
+
+                        <!-- Phone Form -->
+                        <div id="form-phone" class="qr-form">
+                            <div class="form-group">
+                                <label for="phone-content">Phone Number</label>
+                                <input type="tel" id="phone-content" placeholder="+1 234 567 8900">
+                            </div>
+                        </div>
+
+                        <!-- SMS Form -->
+                        <div id="form-sms" class="qr-form">
+                            <div class="form-group">
+                                <label for="sms-phone">Phone Number</label>
+                                <input type="tel" id="sms-phone" placeholder="+1 234 567 8900">
+                            </div>
+                            <div class="form-group">
+                                <label for="sms-message">Message (Optional)</label>
+                                <textarea id="sms-message" placeholder="Your message..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Email Form -->
+                        <div id="form-email" class="qr-form">
+                            <div class="form-group">
+                                <label for="email-to">Email Address</label>
+                                <input type="email" id="email-to" placeholder="hello@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="email-subject">Subject (Optional)</label>
+                                <input type="text" id="email-subject" placeholder="Email subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="email-body">Body (Optional)</label>
+                                <textarea id="email-body" placeholder="Email body..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- WiFi Form -->
+                        <div id="form-wifi" class="qr-form">
+                            <div class="form-group">
+                                <label for="wifi-ssid">Network Name (SSID)</label>
+                                <input type="text" id="wifi-ssid" placeholder="MyWiFiNetwork">
+                            </div>
+                            <div class="form-group">
+                                <label for="wifi-password">Password</label>
+                                <div class="input-with-toggle">
+                                    <input type="password" id="wifi-password" placeholder="WiFi password">
+                                    <button type="button" class="toggle-visibility" data-target="wifi-password">
+                                        <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                        <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                            <line x1="1" y1="1" x2="23" y2="23"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="wifi-security">Security Type</label>
+                                <select id="wifi-security">
+                                    <option value="WPA">WPA/WPA2</option>
+                                    <option value="WEP">WEP</option>
+                                    <option value="nopass">None (Open)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="wifi-hidden">
+                                    <span class="checkbox-custom"></span>
+                                    Hidden Network
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Form -->
+                        <div id="form-social" class="qr-form">
+                            <div class="form-group">
+                                <label for="social-platform">Platform</label>
+                                <select id="social-platform">
+                                    <option value="instagram">Instagram</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="youtube">YouTube</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="twitter">X (Twitter)</option>
+                                    <option value="tiktok">TikTok</option>
+                                    <option value="linkedin">LinkedIn</option>
+                                    <option value="snapchat">Snapchat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="social-username">Username / Profile URL</label>
+                                <input type="text" id="social-username" placeholder="username or full URL">
+                            </div>
+                        </div>
+
+                        <!-- vCard Form -->
+                        <div id="form-vcard" class="qr-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="vcard-firstname">First Name</label>
+                                    <input type="text" id="vcard-firstname" placeholder="John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vcard-lastname">Last Name</label>
+                                    <input type="text" id="vcard-lastname" placeholder="Doe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-phone">Phone Number</label>
+                                <input type="tel" id="vcard-phone" placeholder="+1 234 567 8900">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-email">Email</label>
+                                <input type="email" id="vcard-email" placeholder="john@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-company">Company (Optional)</label>
+                                <input type="text" id="vcard-company" placeholder="Company Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-title">Job Title (Optional)</label>
+                                <input type="text" id="vcard-title" placeholder="Software Engineer">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-website">Website (Optional)</label>
+                                <input type="url" id="vcard-website" placeholder="https://example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcard-address">Address (Optional)</label>
+                                <textarea id="vcard-address" placeholder="123 Main St, City, Country" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customization Options -->
+                    <div class="card">
+                        <h2 class="card-title">Customization</h2>
+                        
+                        <div class="customization-grid">
+                            <!-- Size -->
+                            <div class="form-group">
+                                <label for="qr-size">Size: <span id="size-value">256</span>px</label>
+                                <input type="range" id="qr-size" min="128" max="512" value="256" step="8">
+                            </div>
+
+                            <!-- Colors -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="qr-fg-color">Foreground</label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="qr-fg-color" value="#ffffff">
+                                        <span class="color-value">#ffffff</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="qr-bg-color">Background</label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="qr-bg-color" value="#1a1a2e">
+                                        <span class="color-value">#1a1a2e</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transparent Background -->
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="qr-transparent">
+                                    <span class="checkbox-custom"></span>
+                                    Transparent Background
+                                </label>
+                            </div>
+
+                            <!-- Error Correction -->
+                            <div class="form-group">
+                                <label for="qr-error-correction">Error Correction</label>
+                                <select id="qr-error-correction">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+
+                            <!-- Style -->
+                            <div class="form-group">
+                                <label>Style</label>
+                                <div class="style-selector">
+                                    <button class="style-btn active" data-style="square">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <rect x="3" y="3" width="7" height="7"/>
+                                            <rect x="14" y="3" width="7" height="7"/>
+                                            <rect x="3" y="14" width="7" height="7"/>
+                                            <rect x="14" y="14" width="7" height="7"/>
+                                        </svg>
+                                        Square
+                                    </button>
+                                    <button class="style-btn" data-style="rounded">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <rect x="3" y="3" width="7" height="7" rx="2"/>
+                                            <rect x="14" y="3" width="7" height="7" rx="2"/>
+                                            <rect x="3" y="14" width="7" height="7" rx="2"/>
+                                            <rect x="14" y="14" width="7" height="7" rx="2"/>
+                                        </svg>
+                                        Rounded
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Center Logo -->
+                            <div class="form-group">
+                                <label for="qr-logo">Center Logo (Optional)</label>
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="qr-logo" accept="image/*">
+                                    <div class="file-input-display">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                                            <polyline points="21 15 16 10 5 21"/>
+                                        </svg>
+                                        <span id="logo-filename">Choose image...</span>
+                                    </div>
+                                </div>
+                                <button id="remove-logo" class="btn-link" style="display: none;">Remove logo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Preview & Actions -->
+                <div class="panel panel-preview">
+                    <div class="card preview-card">
+                        <h2 class="card-title">Preview</h2>
+                        <div class="qr-preview-container">
+                            <div id="qr-preview" class="qr-preview">
+                                <div class="qr-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="7" height="7"/>
+                                        <rect x="14" y="3" width="7" height="7"/>
+                                        <rect x="3" y="14" width="7" height="7"/>
+                                        <rect x="14" y="14" width="3" height="3"/>
+                                        <rect x="18" y="14" width="3" height="3"/>
+                                        <rect x="14" y="18" width="3" height="3"/>
+                                        <rect x="18" y="18" width="3" height="3"/>
+                                    </svg>
+                                    <p>Enter content to generate QR code</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button id="btn-download" class="btn btn-primary" disabled>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Download PNG
+                            </button>
+                            <button id="btn-copy" class="btn btn-secondary" disabled>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                                Copy
+                            </button>
+                            <button id="btn-reset" class="btn btn-ghost">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="1 4 1 10 7 10"/>
+                                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                                </svg>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- History -->
+                    <div class="card history-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Recent QR Codes</h2>
+                            <button id="btn-clear-history" class="btn-link">Clear all</button>
+                        </div>
+                        <div id="history-list" class="history-list">
+                            <div class="history-empty">
+                                <p>No recent QR codes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 dk-qr. All QR codes are generated locally in your browser.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
